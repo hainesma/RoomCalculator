@@ -10,14 +10,40 @@ namespace RoomCalculator
 
             while( goOn == true)
             {
-                string inputLength = GetUserInput("Enter the length of the room:");
-                double length = double.Parse(inputLength);
+                double length;
+                double width;
+                double height;
 
-                string inputWidth = GetUserInput("Enter the width of the room:");
-                double width = double.Parse(inputWidth);
+                try
+                {
+                    string inputLength = GetUserInput("Enter the length of the room:");
+                    length = double.Parse(inputLength);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("That was not a valid number. Please try again.");
+                    continue;
+                }
 
+                try { 
+                    string inputWidth = GetUserInput("Enter the width of the room:");
+                    width = double.Parse(inputWidth);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("That was not a valid number. Please try again.");
+                    continue;
+                }
+
+                try { 
                 string inputHeight = GetUserInput("Enter the height of the room:");
-                double height = double.Parse(inputHeight);
+                    height = double.Parse(inputHeight);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("That was not a valid number. Please try again.");
+                    continue;
+                }
 
                 double area = length * width;
                 Console.WriteLine($"The area of the room is {area} square feet.");
