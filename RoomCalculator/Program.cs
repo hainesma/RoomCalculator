@@ -6,21 +6,17 @@ namespace RoomCalculator
     {
         static void Main(string[] args)
         {
-            
-            string tryAgain = "Y";
+            bool goOn = true;
 
-            do
+            while( goOn == true)
             {
-                Console.WriteLine("Enter the length of the room:");
-                string inputLength = Console.ReadLine();
+                string inputLength = GetUserInput("Enter the length of the room:");
                 double length = double.Parse(inputLength);
 
-                Console.WriteLine("Enter the width of the room:");
-                string inputWidth = Console.ReadLine();
+                string inputWidth = GetUserInput("Enter the width of the room:");
                 double width = double.Parse(inputWidth);
 
-                Console.WriteLine("Enter the height of the room:");
-                string inputHeight = Console.ReadLine();
+                string inputHeight = GetUserInput("Enter the height of the room:");
                 double height = double.Parse(inputHeight);
 
                 double area = length * width;
@@ -38,11 +34,33 @@ namespace RoomCalculator
                 double cansPaint = perimeter / 5;
                 Console.WriteLine($"Cans of paint: {cansPaint}");
 
-                Console.WriteLine("Would you like to continue? (Y/N)");
-                tryAgain = Console.ReadLine();
-                Console.WriteLine();
-            } while (tryAgain == "Y" || tryAgain == "y");
-            
+                goOn = GetContinue();
+            } 
+           
+        }
+        public static string GetUserInput(string message)
+        {
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+            return input;
+        }
+
+        public static bool GetContinue()
+        {
+            string input = GetUserInput("Would you like to continue? Y/N");
+            if(input.ToLower() == "y")
+            {
+                return true;
+            }
+            else if (input.ToLower() == "n")
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("I don't understand that input. Please try again.");
+                return GetContinue();
+            }
         }
     }
 }
