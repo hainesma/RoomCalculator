@@ -10,38 +10,68 @@ namespace RoomCalculator
 
             while( goOn == true)
             {
-                double length;
-                double width;
-                double height;
+                double length = 0;
+                double width = 0;
+                double height = 0;
 
                 try
                 {
                     string inputLength = GetUserInput("Enter the length of the room:");
                     length = double.Parse(inputLength);
+                    if(length <= 0)
+                    {
+                        throw new Exception("Only positive values are accepted. Please try again.");
+                    }
+
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("That was not a valid number. Please try again.");
                     continue;
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    continue;
+                }
 
-                try { 
+                try 
+                { 
                     string inputWidth = GetUserInput("Enter the width of the room:");
                     width = double.Parse(inputWidth);
+                    if (width <= 0)
+                    {
+                        throw new Exception("Only positive values are accepted. Please try again.");
+                    }
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("That was not a valid number. Please try again.");
                     continue;
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    continue;
+                }
 
-                try { 
+                try 
+                { 
                 string inputHeight = GetUserInput("Enter the height of the room:");
                     height = double.Parse(inputHeight);
+                    if (height <= 0)
+                    {
+                        throw new Exception("Only positive values are accepted. Please try again.");
+                    }
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("That was not a valid number. Please try again.");
+                    continue;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                     continue;
                 }
 
