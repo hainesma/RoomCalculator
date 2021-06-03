@@ -22,7 +22,6 @@ namespace RoomCalculator
                     {
                         throw new Exception("Only positive values are accepted. Please try again.");
                     }
-
                 }
                 catch (FormatException)
                 {
@@ -35,8 +34,8 @@ namespace RoomCalculator
                     continue;
                 }
 
-                try 
-                { 
+                try
+                {
                     string inputWidth = GetUserInput("Enter the width of the room:");
                     width = double.Parse(inputWidth);
                     if (width <= 0)
